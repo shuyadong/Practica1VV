@@ -26,7 +26,7 @@ public class PlayerTest {
         player.act();
         //System.out.println(player.getX());
         boolean resultado = (player.getX() == salidaEsperada);
-        assertFalse(resultado); //Test correcto, tiene que salir rojo
+        assertFalse(resultado); //Test correcto
     }
 
     @Test
@@ -39,7 +39,7 @@ public class PlayerTest {
         player.act();
         //System.out.println(player.getX());
         boolean resultado = (player.getX() == salidaEsperada);
-        assertFalse(resultado); //Test correcto, tiene que salir rojo
+        assertFalse(resultado); //Test correcto
     }
 
     @Test
@@ -86,7 +86,7 @@ public class PlayerTest {
         int salidaPlayerEnMedio = 179;
         int salidaPlayerInitGround = 280;
         boolean xyCorrecto = (salidaPlayerEnMedio == player.getX()) && (salidaPlayerInitGround == player.getY());
-        assertTrue(xyCorrecto); //El codigo esta mal, sale false en vez de true
+        assertTrue(xyCorrecto);
     }
 
     @Test
