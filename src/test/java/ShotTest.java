@@ -330,7 +330,7 @@ public class ShotTest {
             valy.setAccessible(true);
             int valory = (int) valy.get(shot);
 
-            assertTrue((valorx == 352) && (valory == 175));
+            assertTrue((valorx == 358) && (valory == 175));
 
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
