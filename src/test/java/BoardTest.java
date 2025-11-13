@@ -211,6 +211,67 @@ public class BoardTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void test_Update_Aliens_Caso1 () {
+        try{
+            Alien alien = board.getAliens().getFirst();
+            int posY;
+            alien.setX(5);
+            posY = alien.getY();
+            Method method = Board.class.getDeclaredMethod("update_aliens");
+            method.setAccessible(true);
+            method.invoke(board);
+            assertTrue(board.isInGame());
+            assertEquals(1, board.getDirection());
+            for (int i = 0; i < Commons.ALIEN_ROWS; i++) {
+                for (int j = 0; j < Commons.ALIEN_COLUMNS; j++) {
+                    alien = board.getAliens().removeFirst();
+                    assertEquals(posY + Commons.GO_DOWN + i * (Commons.ALIEN_HEIGHT + Commons.ALIEN_SEPARATOR), alien.getY());
+                }
+            }
+        }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void test_Update_Sliens_Caso2 () {
+        try {
+            Alien alien = board.getAliens().getFirst();
+            alien.setX(6);
+            alien.setY(Commons.GROUND - Commons.ALIEN_HEIGHT);
+            Method method = Board.class.getDeclaredMethod("update_aliens");
+            method.setAccessible(true);
+            method.invoke(board);
+            assertFalse(board.isInGame());
+        } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void test_Update_Aliens_Caso3() {
+        try{
+            Alien alien = board.getAliens().getFirst();
+            int posY;
+            alien.setX(328);
+            posY = alien.getY();
+            Method method = Board.class.getDeclaredMethod("update_aliens");
+            method.setAccessible(true);
+            method.invoke(board);
+            assertTrue(board.isInGame());
+            assertEquals(-1, board.getDirection());
+            for (int i = 0; i < Commons.ALIEN_ROWS; i++) {
+                for (int j = 0; j < Commons.ALIEN_COLUMNS; j++) {
+                    alien = board.getAliens().removeFirst();
+                    assertEquals(posY + Commons.GO_DOWN + i * (Commons.ALIEN_HEIGHT + Commons.ALIEN_SEPARATOR), alien.getY());
+                }
+            }
+        }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 
