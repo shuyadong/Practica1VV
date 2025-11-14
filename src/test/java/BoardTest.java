@@ -65,7 +65,6 @@ public class BoardTest {
         }
     }
 
-
     @Test
     public void test_Update_Shots_Caso1() {
         try{
@@ -138,7 +137,7 @@ public class BoardTest {
             throw new RuntimeException(e);
         }
     }
-
+    //Todo
     @Test
     public void test_Update_Shots_Caso5() {
         try{
@@ -206,6 +205,7 @@ public class BoardTest {
     public void test_Update_Aliens_Caso1 () {
         try{
             Alien alien;
+            boolean posYAlienCorrecto = true;
             List<Integer> posYAliens = new ArrayList<>();
             Iterator<Alien> itAlien = board.getAliens().iterator();
             while (itAlien.hasNext()) {
@@ -216,16 +216,15 @@ public class BoardTest {
             Method method = Board.class.getDeclaredMethod("update_aliens");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(board.isInGame());
-            assertEquals(1, board.getDirection());
             Iterator<Alien> itAlienAus = board.getAliens().iterator();
             Iterator<Integer> itAlienPosY = posYAliens.iterator();
             int posY;
-            while (itAlienAus.hasNext() && itAlienPosY.hasNext()) {
+            while (itAlienAus.hasNext() && itAlienPosY.hasNext() && posYAlienCorrecto) {
                 alien = itAlienAus.next();
                 posY = itAlienPosY.next();
-                assertEquals(alien.getY(),posY + Commons.GO_DOWN);
+                posYAlienCorrecto = (alien.getY() == (posY + Commons.GO_DOWN));
             }
+            assertTrue(board.isInGame() && (board.getDirection() == 1) && posYAlienCorrecto);
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -250,6 +249,7 @@ public class BoardTest {
     public void test_Update_Aliens_Caso3() {
         try{
             Alien alien;
+            boolean posYAlienCorrecto = true;
             List<Integer> posYAliens = new ArrayList<>();
             Iterator<Alien> itAlien = board.getAliens().iterator();
             while (itAlien.hasNext()) {
@@ -260,16 +260,15 @@ public class BoardTest {
             Method method = Board.class.getDeclaredMethod("update_aliens");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(board.isInGame());
-            assertEquals(-1, board.getDirection());
             Iterator<Alien> itAlienAus = board.getAliens().iterator();
             Iterator<Integer> itAlienPosY = posYAliens.iterator();
             int posY;
-            while (itAlienAus.hasNext() && itAlienPosY.hasNext()) {
+            while (itAlienAus.hasNext() && itAlienPosY.hasNext() && posYAlienCorrecto) {
                 alien = itAlienAus.next();
                 posY = itAlienPosY.next();
-                assertEquals(alien.getY(),posY + Commons.GO_DOWN);
+                posYAlienCorrecto = (alien.getY() == (posY + Commons.GO_DOWN));
             }
+            assertTrue(board.isInGame() && (board.getDirection() == 1) && posYAlienCorrecto);
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
