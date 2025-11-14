@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ShotTest {
 
     @Test
-    void testinitShotCP1(){
+    void testinitShot_Caso1(){
         int x = 166;
         int y = 166;
         Shot shot = new Shot();
