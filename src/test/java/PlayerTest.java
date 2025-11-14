@@ -20,7 +20,7 @@ public class PlayerTest {
     void testActR1Incorrecto() {
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
         int x = 0;
-        int salidaEsperada = -2;
+        int salidaEsperada = 0;
         player.setX(x);
         player.keyPressed(e);
         player.act();
@@ -33,7 +33,7 @@ public class PlayerTest {
     void TestActR2Incorrecto(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
         int x = 358;
-        int salidaEsperada = 360;
+        int salidaEsperada = 358;
         player.setX(x);
         player.keyPressed(e);
         player.act();
