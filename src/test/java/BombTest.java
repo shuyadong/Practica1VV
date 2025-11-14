@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BombTest {
 
     @Test
-    void testinitBomb_NormalC() {
+    void testinitBomb_Caso1() {
         int x = 100;
         int y = 100;
         Alien a = new Alien(x, y);
@@ -45,7 +45,7 @@ public class BombTest {
     }
 
     @Test
-    void testinitBomb_XFueraRangoNegativoNC() {
+    void testinitBomb_Caso2() {
         int x = -10;
         int y = 100;
         Alien a = new Alien(x, y);
@@ -78,7 +78,7 @@ public class BombTest {
     }
 
     @Test
-    void testinitBomb_XFueraRangoPositivoNC() {
+    void testinitBomb_Caso3() {
         int x = 359;
         int y = 100;
         Alien a = new Alien(x, y);
@@ -111,7 +111,7 @@ public class BombTest {
     }
 
     @Test
-    void testinitBomb_YFueraRangoNegativoNC() {
+    void testinitBomb_Caso4() {
         int x = 100;
         int y = -10;
         Alien a = new Alien(x, y);
@@ -144,7 +144,7 @@ public class BombTest {
     }
 
     @Test
-    void testinitBomb_YFueraRangoPositivoNC() {
+    void testinitBomb_Caso5() {
         int x = 100;
         int y = 351;
         Alien a = new Alien(x, y);
