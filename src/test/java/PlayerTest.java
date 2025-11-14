@@ -120,8 +120,8 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyPressed(e);
-        resultado = (e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha);
-        assertFalse(resultado);
+        resultado = !((e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha));
+        assertTrue(resultado);
     }
 
     @Test
@@ -151,7 +151,7 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyReleased(e);
-        resultado = (e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha);
-        assertFalse(resultado);
+        resultado = !((e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha));
+        assertTrue(resultado);
     }
 }
