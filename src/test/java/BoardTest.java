@@ -274,6 +274,7 @@ public class BoardTest {
         }
     }
 
+    //Todo
     @Test
     public void test_Update_Bomb_Caso1(){
         try{
@@ -281,16 +282,17 @@ public class BoardTest {
             alien.getBomb().setDestroyed(false);
             alien.getBomb().setY(274);
             alien.getBomb().setX(10);
+            int bombY = alien.getBomb().getY();
             java.lang.reflect.Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertFalse(alien.getBomb().isDestroyed());
-            assertTrue(board.isInGame());
+            assertTrue(!alien.getBomb().isDestroyed() && board.isInGame() && (bombY + Commons.BOMB_SPEED) == alien.getBomb().getY());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
+    //Todo
     @Test
     public void test_Update_Bomb_Caso2(){
         try{
@@ -298,33 +300,34 @@ public class BoardTest {
             alien.getBomb().setDestroyed(false);
             alien.getBomb().setY(275);
             alien.getBomb().setX(board.getPlayer().getX()-1);
+            int bombY = alien.getBomb().getY();
             Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertFalse(alien.getBomb().isDestroyed());
-            assertTrue(board.isInGame());
+            assertTrue(!alien.getBomb().isDestroyed() && board.isInGame() && (bombY + Commons.BOMB_SPEED) == alien.getBomb().getY());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
+    //Todo
     @Test
     public void test_Update_Bomb_Caso3(){
         try{
             Alien alien = board.getAliens().getFirst();
             alien.getBomb().setDestroyed(false);
             alien.getBomb().setY(275);
-
             alien.getBomb().setX(board.getPlayer().getX()+Commons.PLAYER_WIDTH+1);
+            int bombY = alien.getBomb().getY();
             Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertFalse(alien.getBomb().isDestroyed());
-            assertTrue(board.isInGame());
+            assertTrue(!alien.getBomb().isDestroyed() && board.isInGame() && (bombY + Commons.BOMB_SPEED) == alien.getBomb().getY());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
+
     //Todo
     @Test
     public void test_Update_Bomb_Caso4(){
@@ -336,13 +339,12 @@ public class BoardTest {
             Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(alien.getBomb().isDestroyed());
-            assertFalse(board.isInGame());
+            assertTrue(alien.getBomb().isDestroyed() && !board.isInGame());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
-    //Todo
+
     @Test
     public void test_Update_Bomb_Caso5(){
         try{
@@ -353,8 +355,7 @@ public class BoardTest {
             Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(board.isInGame());
-            assertFalse(alien.getBomb().isDestroyed());
+            assertTrue(board.isInGame() && alien.getBomb().isDestroyed());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -370,8 +371,7 @@ public class BoardTest {
             for (int i = 0; i < 15 && alien.getBomb().isDestroyed(); i++) {
                 method.invoke(board);
             }
-            assertTrue(board.isInGame());
-            assertFalse(alien.getBomb().isDestroyed());
+            assertTrue(board.isInGame() && !alien.getBomb().isDestroyed());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
