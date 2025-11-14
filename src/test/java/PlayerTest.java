@@ -17,7 +17,7 @@ public class PlayerTest {
         player = new Player();
     }
     @Test
-    void testActCaso1() {
+    void testAct_Caso1() {
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
         int x = 0;
         int salidaEsperada = 0;
@@ -32,7 +32,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestActCaso2(){
+    void TestAct_Caso2(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
         int x = 358;
         int salidaEsperada = 358;
@@ -46,7 +46,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestActCaso3(){
+    void TestAct_Caso3(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
         int x = 36;
         int salidaEsperada = 38;
@@ -60,7 +60,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestActCaso4(){
+    void TestAct_Caso4(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_0, KeyEvent.CHAR_UNDEFINED);
         int x = 38;
         int salidaEsperada = 38;
@@ -74,7 +74,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestActCaso5(){
+    void TestAct_Caso5(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
         int x = 100;
         int salidaEsperada = 98;
@@ -88,7 +88,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestInitPlayerCaso1(){
+    void TestInitPlayer_Caso1(){
         int salidaPlayerEnMedio = 179;
         int salidaPlayerInitGround = 280;
         boolean xyCorrecto;
@@ -97,7 +97,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyPressedCaso1(){
+    void TestKeyPressed_Caso1(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaIzquierda = 37;
         boolean resultado;
@@ -108,7 +108,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyPressedCaso2(){
+    void TestKeyPressed_Caso2(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaDerecha = 39;
         boolean resultado;
@@ -119,7 +119,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyPressedCaso3(){
+    void TestKeyPressed_Caso3(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_W, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaIzquierda = 37;
         int salidaEsperadaDerecha = 39;
@@ -131,7 +131,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyReleasedCaso1(){
+    void TestKeyReleased_Caso1(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaIzquierda = 37;
         boolean resultado;
@@ -142,7 +142,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyReleasedCaso2(){
+    void TestKeyReleased_Caso2(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaDerecha = 39;
         boolean resultado;
@@ -153,7 +153,7 @@ public class PlayerTest {
     }
 
     @Test
-    void TestKeyReleasedCaso3(){
+    void TestKeyReleased_Caso3(){
         KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_W, KeyEvent.CHAR_UNDEFINED);
         int salidaEsperadaIzquierda = 37;
         int salidaEsperadaDerecha = 39;
