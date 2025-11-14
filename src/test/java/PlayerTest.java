@@ -54,9 +54,8 @@ public class PlayerTest {
         player.setX(x);
         player.keyPressed(e);
         player.act();
-        //System.out.println(player.getX());
         resultado = (player.getX() == salidaEsperada);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -68,9 +67,8 @@ public class PlayerTest {
         player.setX(x);
         player.keyPressed(e);
         player.act();
-        //System.out.println(player.getX());
         resultado = (player.getX() == salidaEsperada);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -82,9 +80,8 @@ public class PlayerTest {
         player.setX(x);
         player.keyPressed(e);
         player.act();
-        //System.out.println(player.getX());
         resultado = (player.getX() == salidaEsperada);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -102,9 +99,8 @@ public class PlayerTest {
         int salidaEsperadaIzquierda = 37;
         boolean resultado;
         player.keyPressed(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaIzquierda);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -113,9 +109,8 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyPressed(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaDerecha);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -125,9 +120,8 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyPressed(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha);
-        assertFalse(resultado); //Test correcto
+        assertFalse(resultado);
     }
 
     @Test
@@ -136,9 +130,8 @@ public class PlayerTest {
         int salidaEsperadaIzquierda = 37;
         boolean resultado;
         player.keyReleased(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaIzquierda);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -147,9 +140,8 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyReleased(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaDerecha);
-        assertTrue(resultado); //Test correcto
+        assertTrue(resultado);
     }
 
     @Test
@@ -159,8 +151,7 @@ public class PlayerTest {
         int salidaEsperadaDerecha = 39;
         boolean resultado;
         player.keyReleased(e);
-        //System.out.println(e.getKeyCode());
         resultado = (e.getKeyCode() == salidaEsperadaIzquierda) && (e.getKeyCode() == salidaEsperadaDerecha);
-        assertFalse(resultado); //Test correcto
+        assertFalse(resultado);
     }
 }
