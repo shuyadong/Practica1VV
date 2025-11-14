@@ -67,161 +67,136 @@ public class BoardTest {
 
 
     @Test
-    public void test_Update_Shot_Caso1() {
+    public void test_Update_Shots_Caso1() {
         try{
-            Alien alien = board.getAliens().getFirst();
             Shot shot = board.getShot();
-            int dieths = board.getDeaths();
-            alien.die();
-            shot.setDying(false);
-            shot.setX(alien.getX());
-            shot.setY(alien.getY());
+            shot.die();
             Method method = Board.class.getDeclaredMethod("update_shots");
             method.setAccessible(true);
             method.invoke(board);
-            assertFalse(alien.isVisible());
-            assertEquals(dieths, board.getDeaths());
+            assertFalse(shot.isVisible());
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void test_Update_Shot_Caso2() {
+    public void test_Update_Shots_Caso2() {
         try{
-
-            Alien alien = board.getAliens().getFirst();
             Shot shot = board.getShot();
-            Method methodSprite = Sprite.class.getDeclaredMethod("setVisible", boolean.class);
-            methodSprite.setAccessible(true);
-            methodSprite.invoke(shot,true);
+            shot.setY(-1);
             shot.setX(100);
-            shot.setY(100);
-            methodSprite.invoke(alien,false);
-            boolean alienVisible, shotVisible, numDeths, shotPosY;
-            int deaths = board.getDeaths(), shotY = shot.getY();
-            Method methodBoard = Board.class.getDeclaredMethod("update_shots");
-            methodBoard.setAccessible(true);
-            methodBoard.invoke(board);
-            alienVisible = !alien.isVisible();
-            shotVisible = shot.isVisible();
-            numDeths = (board.getDeaths() == deaths);
-            shotPosY = (shotY - Commons.BOMB_SPEED == shot.getY());
-            assertTrue( alienVisible /*&& shotVisible*/ && numDeths && shotPosY );
+            Method method = Board.class.getDeclaredMethod("update_shots");
+            method.setAccessible(true);
+            method.invoke(board);
+            assertFalse(shot.isVisible());
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void test_Update_Shot_Caso3() {
+    public void test_Update_Shots_Caso3() {
         try{
-            Alien alien = board.getAliens().getFirst();
+            Iterator<Alien> itAlien = board.getAliens().iterator();
+            Alien alien = itAlien.next();
+            while (itAlien.hasNext()) {
+                itAlien.next().die();
+            }
             Shot shot = board.getShot();
-            int dieths = board.getDeaths();
+            shot.setX(100);
+            shot.setY(alien.getY()-1);
+            int shotPosY = shot.getY();
+            boolean shotVisible;
+            Method method = Board.class.getDeclaredMethod("update_shots");
+            method.setAccessible(true);
+            method.invoke(board);
+            shotVisible = shot.isVisible();
+            assertTrue(shotVisible && ((shotPosY-Commons.SHOT_SPEED) == shot.getY()));
+        } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void test_Update_Shots_Caso4() {
+        try{
+            Iterator<Alien> itAlien = board.getAliens().iterator();
+            Alien alien = itAlien.next();
+            while (itAlien.hasNext()) {
+                itAlien.next().die();
+            }
+            Shot shot = board.getShot();
             shot.setX(alien.getX()-1);
             shot.setY(alien.getY());
+            int shotPosY = shot.getY();
             Method method = Board.class.getDeclaredMethod("update_shots");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertTrue(shot.isVisible());
-            assertEquals(dieths, board.getDeaths());
+            assertTrue(shot.isVisible() && alien.isVisible() && (shotPosY-Commons.SHOT_SPEED) == shot.getY());
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void test_Update_Shot_Caso4() {
+    public void test_Update_Shots_Caso5() {
         try{
-            Alien alien = board.getAliens().getFirst();
+            Iterator<Alien> itAlien = board.getAliens().iterator();
+            Alien alien = itAlien.next();
+            while (itAlien.hasNext()) {
+                itAlien.next().die();
+            }
             Shot shot = board.getShot();
-            int dieths = board.getDeaths();
-            shot.setX(alien.getX());
-            shot.setY(alien.getY() + Commons.ALIEN_HEIGHT + 1);
-            Method method = Board.class.getDeclaredMethod("update_shots");
-            method.setAccessible(true);
-            method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertTrue(shot.isVisible());
-            assertEquals(dieths, board.getDeaths());
-        } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Test
-    public void test_Update_Shot_Caso5() {
-        try{
-            Alien alien = board.getAliens().getFirst();
-            Shot shot = board.getShot();
-            int dieths = board.getDeaths();
-            shot.setX(alien.getX());
-            shot.setY(alien.getY() - 1);
-            Method method = Board.class.getDeclaredMethod("update_shots");
-            method.setAccessible(true);
-            method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertTrue(shot.isVisible());
-            assertEquals(dieths, board.getDeaths());
-        } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Test
-    public void test_Update_Shot_Caso6() {
-        try{
-            Alien alien = board.getAliens().getFirst();
-            Shot shot = board.getShot();
-            int dieths = board.getDeaths();
             shot.setX(alien.getX());
             shot.setY(alien.getY());
+            int deaths = board.getDeaths();
             Method method = Board.class.getDeclaredMethod("update_shots");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertTrue(shot.isVisible());
-            assertEquals(dieths + 1 , board.getDeaths());
+            assertTrue(!shot.isVisible() && !alien.isVisible() && ((deaths + 1) == board.getDeaths()));
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void test_Update_Shot_Caso7() {
+    public void test_Update_Shots_Caso6() {
         try{
-            Alien alien = board.getAliens().getFirst();
+            Iterator<Alien> itAlien = board.getAliens().iterator();
+            Alien alien = itAlien.next();
+            while (itAlien.hasNext()) {
+                itAlien.next().die();
+            }
             Shot shot = board.getShot();
-            int dieths = board.getDeaths();
             shot.setX(alien.getX() + Commons.ALIEN_WIDTH + 1);
             shot.setY(alien.getY());
+            int shotPosY = shot.getY();
             Method method = Board.class.getDeclaredMethod("update_shots");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertTrue(shot.isVisible());
-            assertEquals(dieths, board.getDeaths());
+            assertTrue(shot.isVisible() && alien.isVisible() && (shotPosY-Commons.SHOT_SPEED) == shot.getY());
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Test
-    public void test_Update_Shot_Caso8() {
+    public void test_Update_Shots_Caso7() {
         try{
-            Alien alien = board.getAliens().getFirst();
+            Iterator<Alien> itAlien = board.getAliens().iterator();
+            Alien alien = itAlien.next();
+            while (itAlien.hasNext()) {
+                itAlien.next().die();
+            }
             Shot shot = board.getShot();
-            int dieths = board.getDeaths();
-            shot.setX(alien.getX());
-            shot.setY(-1);
+            shot.setX(100);
+            shot.setY(alien.getY() + Commons.ALIEN_HEIGHT + 1) ;
+            int shotPosY = shot.getY();
             Method method = Board.class.getDeclaredMethod("update_shots");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(alien.isVisible());
-            assertFalse(shot.isVisible());
-            assertEquals(dieths, board.getDeaths());
+            assertTrue(shot.isVisible() && alien.isVisible() && (shotPosY-Commons.SHOT_SPEED) == shot.getY());
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
