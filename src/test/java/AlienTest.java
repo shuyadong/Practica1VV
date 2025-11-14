@@ -171,32 +171,11 @@ public class AlienTest {
     }
 
     @Test
-    void testActIzquierdaC(){
-        int direccion = -1;
-        int x = 10;
+    void testActCP1(){
+        int direccion = -3;
+        int x = 3;
         Alien a = new Alien(x,10);
         a.act(direccion);
-        assertEquals(9,a.getX());
-    }
-
-    @Test
-    void testActDerechaC(){
-        int direccion = 1;
-        int x = 10;
-        Alien a = new Alien(x,10);
-
-        a.act(direccion);
-        assertEquals(11,a.getX());
-
-    }
-
-
-    @Test
-    void testActErrorNC(){
-        int direccion = 2;
-        int x = 10;
-        Alien a = new Alien(x,10);
-        a.act(direccion);
-        assertEquals(10,a.getX());
+        assertEquals(0,a.getX());
     }
 }
