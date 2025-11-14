@@ -25,7 +25,6 @@ public class PlayerTest {
         player.setX(x);
         player.keyPressed(e);
         player.act();
-        //System.out.println(player.getX());
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
 
@@ -40,7 +39,6 @@ public class PlayerTest {
         player.setX(x);
         player.keyPressed(e);
         player.act();
-        //System.out.println(player.getX());
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
     }
