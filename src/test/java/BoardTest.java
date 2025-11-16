@@ -317,7 +317,6 @@ public class BoardTest {
         }
     }
 
-    //Todo
     @Test
     public void test_Update_Bomb_Caso3(){
         try{
@@ -339,7 +338,6 @@ public class BoardTest {
         }
     }
 
-    //Todo
     @Test
     public void test_Update_Bomb_Caso4(){
         try{
@@ -349,12 +347,11 @@ public class BoardTest {
                 itAlien.next().die();
             }
             alien.getBomb().setDestroyed(false);
-            alien.getBomb().setY(Commons.GROUND - Commons.PLAYER_HEIGHT - Commons.BOMB_HEIGHT + 1);
+            alien.getBomb().setY(Commons.GROUND - Commons.PLAYER_HEIGHT - Commons.BOMB_HEIGHT);
             alien.getBomb().setX(board.getPlayer().getX());
             Method method = Board.class.getDeclaredMethod("update_bomb");
             method.setAccessible(true);
             method.invoke(board);
-            assertTrue(board.getPlayer().isDying());
             assertTrue(alien.getBomb().isDestroyed() && board.getPlayer().isDying());
         }catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
