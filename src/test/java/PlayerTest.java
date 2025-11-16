@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PlayerTest {
 
@@ -19,12 +18,12 @@ public class PlayerTest {
     }
     @Test
     void testAct_Caso1() {
-        KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
+        int dx = -2;
         int x = 0;
         int salidaEsperada = 0;
         boolean resultado ;
         player.setX(x);
-        player.keyPressed(e);
+        player.setDx(dx);
         player.act();
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
@@ -33,12 +32,12 @@ public class PlayerTest {
 
     @Test
     void TestAct_Caso2(){
-        KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
+        int dx = 2;
         int x = Commons.BOARD_WIDTH;
         int salidaEsperada = Commons.BOARD_WIDTH;
         boolean resultado;
         player.setX(x);
-        player.keyPressed(e);
+        player.setDx(dx);
         player.act();
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
@@ -46,12 +45,12 @@ public class PlayerTest {
 
     @Test
     void TestAct_Caso3(){
-        KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
+        int dx = 2;
         int x = 36;
         int salidaEsperada = 38;
         boolean resultado;
         player.setX(x);
-        player.keyPressed(e);
+        player.setDx(dx);
         player.act();
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
@@ -59,12 +58,12 @@ public class PlayerTest {
 
     @Test
     void TestAct_Caso4(){
-        KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_0, KeyEvent.CHAR_UNDEFINED);
+        int dx = 0;
         int x = 38;
         int salidaEsperada = 38;
         boolean resultado;
         player.setX(x);
-        player.keyPressed(e);
+        player.setDx(dx);
         player.act();
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
@@ -72,12 +71,12 @@ public class PlayerTest {
 
     @Test
     void TestAct_Caso5(){
-        KeyEvent e = new KeyEvent(new JButton(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
+        int dx = -2;
         int x = 100;
         int salidaEsperada = 98;
         boolean resultado;
         player.setX(x);
-        player.keyPressed(e);
+        player.setDx(-2);
         player.act();
         resultado = (player.getX() == salidaEsperada);
         assertTrue(resultado);
