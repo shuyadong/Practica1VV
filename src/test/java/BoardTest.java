@@ -3,13 +3,10 @@ import main.Commons;
 import org.junit.jupiter.api.Test;
 import space_invaders.sprites.Alien;
 import space_invaders.sprites.Shot;
-import space_invaders.sprites.Sprite;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,9 +18,8 @@ public class BoardTest {
         board=new Board();
     }
 
-    //Todo
     @Test
-    public void test_GameInit_Case1(){
+    public void test_GameInit_Caso1(){
         Alien alien;
         boolean separacionX, separacionY;
         Iterator<Alien> alienIterator = board.getAliens().iterator();
@@ -40,7 +36,7 @@ public class BoardTest {
     }
 
     @Test
-    public void test_Update_Case1() {
+    public void test_Update_Caso1() {
         try{
             String mensaje =  "Game won!";
             board.setDeaths(24);
@@ -54,7 +50,7 @@ public class BoardTest {
     }
 
     @Test
-    public void test_Update_Case2() {
+    public void test_Update_Caso2() {
         try{
             board.setDeaths(5);
             Method method = Board.class.getDeclaredMethod("update");
@@ -279,7 +275,6 @@ public class BoardTest {
         }
     }
 
-    //Todo
     @Test
     public void test_Update_Bomb_Caso1(){
         try{
@@ -301,7 +296,6 @@ public class BoardTest {
         }
     }
 
-    //Todo
     @Test
     public void test_Update_Bomb_Caso2(){
         try{
